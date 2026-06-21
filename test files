@@ -6,6 +6,6 @@ public class Test
     {
         return _db.Users
                   .FirstOrDefaultAsync(x => x.Id == 1)
-                  .Result;
+                  .Result; 
     }
 }
