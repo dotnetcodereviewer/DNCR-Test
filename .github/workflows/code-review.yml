@@ -1,0 +1,20 @@
+name: DotNetCodeReviewer
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dotnetcodereviewer/DotNetCodeReviewer-action@v1
+        with:
+          api-key: ${{ secrets.DNCR_API_KEY }}
