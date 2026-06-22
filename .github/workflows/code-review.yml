@@ -1,20 +1,22 @@
-name: DotNetCodeReviewer
+name: Code Review
 
 on:
   pull_request:
-    types: [opened, synchronize]
 
+# REQUIRED: lets the action post review comments on the PR.
 permissions:
-  pull-requests: write
   contents: read
+  pull-requests: write
 
 jobs:
-  review:
+  dotnet-code-review:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dotnetcodereviewer/DotNetCodeReviewer-action@v1
+      - name: DotNetCodeReviewer
+        uses: dotnetcodereviewer/DotNetCodeReviewer-action@v1
         with:
           api-key: ${{ secrets.DNCR_API_KEY }}
+          # fail-on: critical
+          # max-files: 50
