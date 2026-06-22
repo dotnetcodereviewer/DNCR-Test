@@ -1,0 +1,10 @@
+using System;
+using System.Linq;
+
+public class Test
+{
+    public string Get()
+    {
+        return _db.Users.FirstOrDefaultAsync(x => x.Id == 1).Result;
+    }
+}
